@@ -11,21 +11,21 @@ const notFound=require(path.join(__dirname,'middlewares','notFound.js'));
 const PORT=process.env.PORT||3500;
 
 const authRouter=require(path.join(__dirname,'routes','auth.js'));
-
+const authentication=require(path.join(__dirname,'middlewares','authentication'));
 connectDB();
 
 
 
-
-app.use(logger);
 app.use(express.json()); 
+app.use(logger);
+
+
+app.use('/api/auth',authRouter);
+// app.use('/api/users',authentication,usersRouter);
+
+
 app.use(notFound);
 app.use(errorHandlerMiddleware);
-
-
-// app.use('/api/auth',authRouter);
-
-
 
 mongoose.connection.once('open',()=>
 {

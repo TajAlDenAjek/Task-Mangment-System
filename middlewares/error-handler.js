@@ -4,6 +4,7 @@ const CustomAPIError=require(path.join(__dirname,'..','errors'));
 const {logEvents}=require(path.join(__dirname,'logEvents.js'));
 const errorHandlerMiddleware = (err, req, res, next) =>
 {
+  console.log(err.stack)
   logEvents(`${err.name}: ${err.message}`,'errLog.txt');
   let customError =
   {
@@ -12,10 +13,10 @@ const errorHandlerMiddleware = (err, req, res, next) =>
     msg: err.message || 'Something went wrong try again later',
   }
 
-  if (err instanceof CustomAPIError)
-  {
-    return res.status(err.statusCode).json({ msg: err.message })
-  }
+  // if (err instanceof CustomAPIError)
+  // {
+  //   return res.status(err.statusCode).json({ msg: err.message })
+  // }
 
   if (err.name === 'ValidationError') {
     customError.msg = Object.values(err.errors)
@@ -33,7 +34,6 @@ const errorHandlerMiddleware = (err, req, res, next) =>
     customError.msg = `No item found with id : ${err.value}`
     customError.statusCode = 404
   }
-
   return res.status(customError.statusCode).json({ msg: customError.msg });
 }
 
