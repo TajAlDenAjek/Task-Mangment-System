@@ -1,0 +1,25 @@
+2023/03/16	12:22:05	6ba7b810-9dad-11d1-80b4-00c04fd430c8	TypeError: UnauthenticatedError is not a constructor
+2023/03/16	12:22:31	6ba7b810-9dad-11d1-80b4-00c04fd430c8	TypeError: UnauthenticatedError is not a constructor
+2023/03/16	12:35:57	6ba7b810-9dad-11d1-80b4-00c04fd430c8	TypeError: UnauthenticatedError is not a constructor
+2023/03/16	12:37:34	6ba7b810-9dad-11d1-80b4-00c04fd430c8	CastError: Cast to ObjectId failed for value "6411a6869c81ff6b8eaa4c6" (type string) at path "_id" for model "User"
+2023/03/16	12:38:03	6ba7b810-9dad-11d1-80b4-00c04fd430c8	CastError: Cast to ObjectId failed for value "6411a6869c81ff6b8eaa4c6" (type string) at path "_id" for model "User"
+2023/03/16	12:38:46	6ba7b810-9dad-11d1-80b4-00c04fd430c8	CastError: Cast to ObjectId failed for value "6411a6869c81ff6b8eaa4c6" (type string) at path "_id" for model "User"
+2023/03/16	12:43:18	6ba7b810-9dad-11d1-80b4-00c04fd430c8	ReferenceError: json is not defined
+2023/03/16	12:46:10	6ba7b810-9dad-11d1-80b4-00c04fd430c8	CastError: Cast to ObjectId failed for value "potato" (type string) at path "_id" for model "User"
+2023/03/16	12:46:23	6ba7b810-9dad-11d1-80b4-00c04fd430c8	CastError: Cast to ObjectId failed for value "6411a6869c81ff6b8eaa4c652" (type string) at path "_id" for model "User"
+2023/03/16	13:02:59	6ba7b810-9dad-11d1-80b4-00c04fd430c8	ReferenceError: bcrypt is not defined
+2023/03/16	13:03:01	6ba7b810-9dad-11d1-80b4-00c04fd430c8	ReferenceError: bcrypt is not defined
+2023/03/16	13:04:03	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	13:04:45	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	13:05:06	6ba7b810-9dad-11d1-80b4-00c04fd430c8	MongoServerError: E11000 duplicate key error collection: taskMangmentSystem.users index: email_1 dup key: { email: "potato32@gmail.com" }
+2023/03/16	13:06:49	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	13:08:24	6ba7b810-9dad-11d1-80b4-00c04fd430c8	ReferenceError: password is not defined
+2023/03/16	13:09:25	6ba7b810-9dad-11d1-80b4-00c04fd430c8	TypeError: Cannot destructure property 'password' of 'users._doc' as it is undefined.
+2023/03/16	13:24:19	6ba7b810-9dad-11d1-80b4-00c04fd430c8	TypeError: UnauthenticatedError is not a constructor
+2023/03/16	13:53:17	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	13:53:24	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	13:53:25	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	14:01:07	6ba7b810-9dad-11d1-80b4-00c04fd430c8	MongoServerError: Plan executor error during findAndModify :: caused by :: E11000 duplicate key error collection: taskMangmentSystem.users index: email_1 dup key: { email: "potato232@gmail.com" }
+2023/03/16	14:06:35	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	14:06:42	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials
+2023/03/16	14:07:04	6ba7b810-9dad-11d1-80b4-00c04fd430c8	Error: Invalid Credentials

@@ -1,7 +1,7 @@
 const path=require('path');
 const { StatusCodes } = require('http-status-codes')
 const { BadRequestError, UnauthenticatedError } = require(path.join(__dirname,'..','errors'));
-const User=require(path.join('..','models','user.js'));
+const User=require(path.join(__dirname,'..','models','user.js'));
 const registerController = async (req, res) =>
 {
     const user=await User.create({...req.body});
@@ -17,7 +17,7 @@ const loginController = async (req, res) =>
     {
         throw new BadRequestError('Please provide email and password');
     }
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).exec();
     if (!user)
     {
         throw new UnauthenticatedError('Invalid Credentials');
@@ -29,6 +29,9 @@ const loginController = async (req, res) =>
     }
     // compare password
     const token = user.createJWT();
+    user.token=token;
+    user.password=password;
+    await user.save();
     res.status(StatusCodes.OK).json({ user: { name: user.name }, token });
 }
 
