@@ -27,24 +27,29 @@ const UserSchema = new mongoose.Schema
         required: [true, 'Please provide password'],
         minlength: 6,
     },
+    token:
+    {
+      type:String,
+      default:'',
+    }
 });
 
 UserSchema.pre('save', async function() 
 {
   const salt = await bcrypt.genSalt(10);
-  console.log(salt);
   this.password = await bcrypt.hash(this.password, salt);
 });
 
 UserSchema.methods.createJWT = function()
 {
-  return jwt.sign(
+  const token=jwt.sign(
     { userId: this._id, name: this.name },
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,
     }
   )
+  return token;
 };
 
 UserSchema.methods.comparePassword = async function(canditatePassword)
