@@ -32,7 +32,7 @@ const loginController = async (req, res) =>
     user.token=token;
     user.password=password;
     await user.save();
-    res.status(StatusCodes.OK).json({ user: { name: user.name }, token });
+    res.status(StatusCodes.OK).json({ user: {id:user._id ,name: user.name } , token });
 }
 
 module.exports =

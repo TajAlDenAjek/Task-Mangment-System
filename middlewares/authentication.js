@@ -16,6 +16,9 @@ const auth = async (req, res, next) =>
   {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     req.user = { userId: payload.userId, name: payload.name };
+    const temp=await User.findOne({_id:req.user.userId,token:token})
+    if(!temp)
+      throw new UnauthenticatedError('Authentication invalid');
     next()
   } catch (error)
   {
