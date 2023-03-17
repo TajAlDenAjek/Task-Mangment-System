@@ -31,7 +31,13 @@ const UserSchema = new mongoose.Schema
     {
       type:String,
       default:'',
-    }
+    },
+    joinedGroups:[
+      {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Group',
+      }
+    ]
 });
 
 UserSchema.pre('save', async function() 

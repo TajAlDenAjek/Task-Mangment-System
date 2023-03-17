@@ -42,7 +42,7 @@ const updateUser=async(req,res)=>
         let oldUser=await User.findById(req.params.id);
         oldUser=oldUser.name;
         // update the new name 
-        const updatedUser=await User.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true});
+        const updatedUser=await User.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true}).select(['-password']);
         //responding
         res.status(StatusCodes.OK).json(updatedUser);
     }

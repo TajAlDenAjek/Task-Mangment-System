@@ -13,6 +13,9 @@ const PORT=process.env.PORT||3500;
 const authRouter=require(path.join(__dirname,'routes','auth.js'));
 const authentication=require(path.join(__dirname,'middlewares','authentication'));
 const usersRouter=require(path.join(__dirname,'routes','users'));
+const gropusRouter=require(path.join(__dirname,'routes','groups.js'));
+
+
 connectDB();
 
 
@@ -23,7 +26,7 @@ app.use(logger);
 
 app.use('/api/auth',authRouter);
 app.use('/api/users',authentication,usersRouter);
-
+app.use('/api/groups',authentication,gropusRouter);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);

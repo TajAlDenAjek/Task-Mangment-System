@@ -1,7 +1,11 @@
 const mongoose=require('mongoose');
 
-const groupdSchema=new mongoose.Schema
+const groupSchema=new mongoose.Schema
 ({
+    groupName:{
+        type:String,
+        required:[true,'please provide a name to the group']
+    },
     groupManger:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',
