@@ -1,6 +1,7 @@
 const path=require('path');
 const User=require(path.join(__dirname,'..','models','user.js'));
 const Group=require(path.join(__dirname,'..','models','group.js'));
+const Task=require(path.join(__dirname,'..','models','task.js'));
 const { StatusCodes } = require('http-status-codes');
 const { BadRequestError, NotFoundError } = require(path.join(__dirname,'..','errors'));
 
@@ -19,7 +20,7 @@ const getOwnedGroups=async(req,res)=>
 }
 const getJoinedGroups=async(req,res)=>
 {
-    const groups=await User.find({_id:req.user.userId}).select('joinedGroups');
+    const groups=await User.find({_id:req.user.userId}).select('joinedGroups').populate('joinedGroups');
     if(!groups)
         res.status(StatusCodes.NO_CONTENT);
     res.status(StatusCodes.OK).json(groups);
@@ -37,7 +38,7 @@ const deleteGroup=async(req,res)=>
     // delete the users from the group
     await User.updateMany({ _id:{$in:group.users }},{$pull:{joinedGroups:group._id}});
     // delete tasks from users in the future
-    // ************************************
+    await Task.deleteMany({ groupId:req.params.id});
     await Group.findByIdAndDelete(req.params.id);
     res.status(StatusCodes.OK).json({msg:"group has been deleted"});
 }
