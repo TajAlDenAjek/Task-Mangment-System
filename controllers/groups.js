@@ -53,7 +53,7 @@ const updateGroup=async(req,res)=>
     if(String(group.groupManger)!==String(req.user.userId))
         return res.status(StatusCodes.UNAUTHORIZED).json({msg:"You can not update a group that is not yours"});
     req.body.users = req.body.users.filter(item => item !== String(req.user.userId));
-    group=await Group.findByIdAndUpdate(req.params.id, {$addToSet:{users:{$each:req.body.users}}},{new:true});
+    group=await Group.findByIdAndUpdate(req.params.id, {$set:{groupName:req.body.groupName},$addToSet:{users:{$each:req.body.users}}},{new:true});
     await User.updateMany({ _id:{$in: group.users }},{$addToSet:{joinedGroups:group._id}});
     return res.status(StatusCodes.OK).json(group);
 }
