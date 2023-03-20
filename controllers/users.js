@@ -3,6 +3,7 @@ const { StatusCodes } = require('http-status-codes');
 const { BadRequestError, NotFoundError } = require(path.join(__dirname,'..','errors'));
 const User=require(path.join(__dirname,'..','models','user.js'));
 const bcrypt=require('bcryptjs');
+const Task=require(path.join(__dirname,'..','models','task.js'));
 
 const getAllUsers=async(req,res)=>
 {
@@ -65,6 +66,7 @@ const deleteUser=async(req,res)=>
     {
         // delete user 
         await User.findByIdAndDelete(req.params.id);
+        await Task.deleteMany({ userId:req.params.id});
         res.status(StatusCodes.OK).json({msg:"account has been deleted"})
     }
     else
