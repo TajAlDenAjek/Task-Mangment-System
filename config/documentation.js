@@ -1,4 +1,3 @@
-const { group } = require('console');
 const path=require('path');
 const reg_login_logout=require(path.join(__dirname,'docs','reg_login_logout'));
 const users=require(path.join(__dirname,'docs','users'));
